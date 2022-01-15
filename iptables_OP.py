@@ -1,4 +1,6 @@
 #
+
+import iptc
 # 增删改查,Add, delete, modify and query
 table='filter'
 chain='INPUT'
