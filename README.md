@@ -34,7 +34,8 @@ FLASK部分还没打算写：
 The flash section is not intended to write:
 If anynoe needs it, I'll add this part.
 
-
+所有的代码在iptables_OP.py 文件
+All code in iptables_op.py file
 EXAMPLE:使用示例
 ```
 #先检查端口是否合法 
