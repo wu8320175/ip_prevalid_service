@@ -63,5 +63,12 @@ add_ip('192.168.0.2','6001')
 # 禁止'192.168.0.2' 访问6001端口
 # Prohibit '192.168.0.2' access 6001 port
 delete_ip('192.168.0.2','6001')
+
+#查看当前所有的权限设置  
+View all current permission Settings  
+iptc.easy.dump_all()
+iptc.easy.dump_chain('filter','INPUT')
+
 #...随意发挥 Free to play
+
 ```
