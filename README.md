@@ -1,8 +1,8 @@
 ​
 ## 背景 background：
 
-        服务器使用frp后，贼难受被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序
-        After the server used FRP, the thief was attacked by a mining virus. After learning from the experience, he decided to add a secondary verification to the server. Only the specified IP is allowed to access the port, so as to avoid abnormal IP scanning my port... So I spent a day writing a small verification program
+        服务器使用frp后，被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序
+        After using FRP, the server was infected with a mining virus, so I decided to add secondary verification to the server, only allowing the specified IP address to access the port, so as to avoid scanning my port with abnormal IP addresses...So I spent the day writing a little validation program
 
 ## 实现的功能如下 functions：  
 
@@ -21,25 +21,106 @@ Encapsulate the above functions into web services. First, allow the current IP t
 ## 原因： python简单。。。。。，flask搭个服务更简单。  
 Reason:Python is simple....., Flask takes a service easier  
 
-首先python-iptables库安装和使用  
-First Python-iptables library installation and use  
+### 首先库安装和使用  
+First library installation and use  
 
-pip install --upgrade python-iptables  
+## 特别说明： python 必须在sudo权限下或者root权限的用户下执行，才能使用python-iptables库  
+Special note: Python must be executed under Sudo permission to use the Python-iptables library 
+下载项目，然后flask_IP&port_valid_service目录下，修改config.json文件，配置密码和禁止的端口  
+Download the project, then Flask_ip & port_valid_service directory, modify the config.json file, configure the password and the forbidden port  
+注意：端口不要加上flask启动的端口
+```
+在ubuntu下：
+sudo pip install --upgrade python-iptables  
+sudo pip install flask
+
+进入index.py的目录 Enter the directory of index.py  
+cd  flask_IP&port_valid_service
+
+启动： Run:
+sudo python index.py
+
+在centos下，先安装iptables
+
+1. sudo yum install iptables-services
+
+2. systemctl start iptables.service
+● iptables.service - IPv4 firewall with iptables
+   Loaded: loaded (/usr/lib/systemd/system/iptables.service; enabled; vendor preset: enabled)
+   Active: active (exited) since Sun 2022-01-16 22:22:34 CST; 1s ago
+  Process: 16982 ExecStart=/usr/libexec/iptables/iptables.init start (code=exited, status=0/SUCCESS)
+ Main PID: 16982 (code=exited, status=0/SUCCESS)
+
+Jan 16 22:22:34 iZ0jleum1rgkepql5fg95pZ systemd[1]: Starting IPv4 firewall with iptables...
+Jan 16 22:22:34 iZ0jleum1rgkepql5fg95pZ iptables.init[16982]: iptables: Applying firewall rules: [  OK  ]
+Jan 16 22:22:34 iZ0jleum1rgkepql5fg95pZ systemd[1]: Started IPv4 firewall with iptables.
+
+3.run python
+[root@iZ0jleum1rgkepql5fg95pZ flask_IP&port_valid_service]# python index.py
+Traceback (most recent call last):
+  File "index.py", line 4, in <module>
+    import iptables_op as op
+  File "/root/flask_IP&port_valid_service/iptables_op.py", line 2, in <module>
+    import iptc
+  File "/usr/local/lib64/python3.6/site-packages/iptc/__init__.py", line 10, in <module>
+    from iptc.ip4tc import (is_table_available, Table, Chain, Rule, Match, Target, Policy, IPTCError)
+  File "/usr/local/lib64/python3.6/site-packages/iptc/ip4tc.py", line 13, in <module>
+    from .xtables import (XT_INV_PROTO, NFPROTO_IPV4, XTablesError, xtables,
+  File "/usr/local/lib64/python3.6/site-packages/iptc/xtables.py", line 825, in <module>
+    raise XTablesError("can't find directory with extensions; "
+## iptc.errors.XTablesError: can't find directory with extensions; please set XTABLES_LIBDIR
+如果出现以上报错，解决方法（找到iptables的xtables文件夹位置，设置环境变量）：
+
+rpm -qa|grep iptables
+
+iptables-libs-1.8.4-17.1.al8.x86_64
+iptables-1.8.4-17.1.al8.x86_64
+iptables-ebtables-1.8.4-17.1.al8.x86_64
+iptables-services-1.8.4-17.1.al8.x86_64
+
+rpm -ql iptables-1.8.4-17.1.al8.x86_64
+![image](https://user-images.githubusercontent.com/24267883/149664238-41837436-6a8a-4ce1-afbf-f6bd25d7580a.png)
+
+export XTABLES_LIBDIR=/usr/lib64/xtables/
+3. python 
+```
+
+最后FLASK web页面
+最开始丑陋的第一版：  
+The first version of the ugly:  
+![image](https://user-images.githubusercontent.com/24267883/149650930-d07b2a08-a8ec-4453-9aaf-228d9b109eaf.png)
+
+ip进行端口验证的页面：  
+IP performs port verification page:  
+http://127.0.0.1:80/login/
+![image](https://user-images.githubusercontent.com/24267883/149660421-1f9a6334-5b66-4727-8126-0211c5d8186a.png)
+
+准入端口管理页面：  
+Access port management page:  
+http://127.0.0.1:80/ports/
+![image](https://user-images.githubusercontent.com/24267883/149660468-75981d5a-9499-40a2-9006-6468e17182ad.png)
+
+查看某个端口下允许进入的IP：  
+View IPs allowed under a port:  
+http://127.0.0.1:80/get_all_ip_in_port/?password=123456&port=6002
 
 参考 ref：  
 官方网站 official:https://github.com/ldx/python-iptables  
 
 Python iptc库csdn的博客 https://blog.csdn.net/sinat_27690807/article/details/115999838?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.pc_relevant_paycolumn_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.pc_relevant_paycolumn_v2&utm_relevant_index=5  
 
-FLASK部分还没打算写：  
-如果有朋友有需要我再更吧。。  
+
 The flask section is not intended to write:  
 If anynoe needs it, I'll add this part.  
 
-所有的代码在iptables_OP.py 文件  
+所有的iptables操作代码在iptables_OP.py 文件  
 All code in iptables_op.py file  
 EXAMPLE:使用示例  
+
 ```
+#first command:
+sudo python
+
 #先检查端口是否合法 
 #Check whether the port is valid
 if check_port('6001',6000,7000):
@@ -74,6 +155,5 @@ iptc.easy.dump_chain('filter','INPUT')
 #...随意发挥 Free to play
 
 ```
-最后FLASK web页面
-![image](https://user-images.githubusercontent.com/24267883/149650930-d07b2a08-a8ec-4453-9aaf-228d9b109eaf.png)
+
 
