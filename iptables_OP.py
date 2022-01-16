@@ -25,13 +25,18 @@ def find_reject_port(port):
                 return i
     return None
 
-#删除对应的端口的禁止权限
-#Delete the deny permission of the corresponding port
-
+#删除对应的端口的禁止权限，并清除该端口下的所有ip
+#Delete the forbidden permission for the port and clear all IP addresses of the port
 def delete_reject_port(port):
     res=find_reject_port(port)
     if res is not None:
+        #清除端口 Remove the port
         iptc.easy.delete_rule(table,chain,res)
+        #清除该端口下的所有ip  Clear all IPS under this port
+        for i in iptc.easy.dump_chain(table,chain):
+            if 'src' not in i:
+                if 'tcp' in i and 'dport' in i['tcp'] and port in i['tcp']['dport']:
+                    iptc.easy.delete_rule(table,chain,i)
         return True
     return False
 
