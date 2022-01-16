@@ -1,8 +1,8 @@
 ​
 ## 背景 background：
 
-        服务器使用frp后，被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序
-        After using FRP, the server was infected with a mining virus, so I decided to add secondary verification to the server, only allowing the specified IP address to access the port, so as to avoid scanning my port with abnormal IP addresses...So I spent the day writing a little validation program
+服务器使用frp后，被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序
+After using FRP, the server was infected with a mining virus, so I decided to add secondary verification to the server, only allowing the specified IP address to access the port, so as to avoid scanning my port with abnormal IP addresses...So I spent the day writing a little validation program
 
 ## 实现的功能如下 functions：  
 
@@ -92,12 +92,12 @@ The first version of the ugly:
 
 ip进行端口验证的页面：  
 IP performs port verification page:  
-http://127.0.0.1:80/login/
+http://127.0.0.1:80/login/  
 ![image](https://user-images.githubusercontent.com/24267883/149660421-1f9a6334-5b66-4727-8126-0211c5d8186a.png)
 
 准入端口管理页面：  
 Access port management page:  
-http://127.0.0.1:80/ports/
+http://127.0.0.1:80/ports/  
 ![image](https://user-images.githubusercontent.com/24267883/149660468-75981d5a-9499-40a2-9006-6468e17182ad.png)
 
 查看某个端口下允许进入的IP：  
