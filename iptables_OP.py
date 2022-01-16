@@ -91,3 +91,15 @@ def check_port(port,low,high):
         return True
     else:
         return False
+    
+# 检查当前设置的port是否在port_list内
+# Check if the currently set PORT is in port_list
+def check_port_list(port,port_list):
+    if not isinstance(port,str):
+        port=str(port)
+    result = value.match(port)
+
+    if result and int(port) in port_list:
+        return port
+    else:
+        return None
