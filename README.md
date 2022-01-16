@@ -12,6 +12,8 @@ The specified port is first inaccessible to all IP addresses and then allowed to
 2.将以上功能封装成web服务，先在网页端通过 二级密码 来允许当前ip的访问服务器，当前ip才能访问目的ip和端口，比如ssh服务等。
 Encapsulate the above functions into web services. First, allow the current IP to access the server through the secondary password on the web page, and the current IP can access the destination IP and port, such as SSH service.
 
+![image](https://user-images.githubusercontent.com/24267883/149650892-36c95553-48d6-412d-bab6-9156c2816f19.png)
+
 ## 使用工具 tools：  
 
         Python，python-iptables库，flask （用于web服务）
@@ -72,3 +74,6 @@ iptc.easy.dump_chain('filter','INPUT')
 #...随意发挥 Free to play
 
 ```
+最后FLASK web页面
+![image](https://user-images.githubusercontent.com/24267883/149650930-d07b2a08-a8ec-4453-9aaf-228d9b109eaf.png)
+
