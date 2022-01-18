@@ -114,7 +114,12 @@ http://127.0.0.1:80/ports/
 View IPs allowed under a port:  
 http://127.0.0.1:80/get_all_ip_in_port/?password=123456&port=6002
 
-参考 ref：  
+
+如果你要配置frp服务的话，请参考：  
+If you want to configure the FRP service, please refer to  
+https://github.com/fatedier/frp  
+
+iptc 参考 ref：  
 官方网站 official:https://github.com/ldx/python-iptables  
 
 Python iptc库csdn的博客 https://blog.csdn.net/sinat_27690807/article/details/115999838?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.pc_relevant_paycolumn_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.pc_relevant_paycolumn_v2&utm_relevant_index=5  
