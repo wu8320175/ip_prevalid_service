@@ -90,9 +90,17 @@ rpm -ql iptables-1.8.4-17.1.al8.x86_64
 
 3）：
 export XTABLES_LIBDIR=/usr/lib64/xtables/
+或者进入环境变量设置永久生效：  
+Or enter the environment variable setting permanently effective:  
+
+ vim ~/.bash_profile  
+ 在最后添加两行：  Add two lines at the end:  
+ XTABLES_LIBDIR=/usr/lib64/xtables/  
+ export XTABLES_LIBDIR  
+ source ~/.bash_profile  
 
 4.rerun flask,允许flask程序   
- sudo python index.py
+ sudo python index.py  
 ```
 
 最后FLASK web页面
