@@ -4,12 +4,12 @@ Project Overview: Prevent unfamiliar IP of the external network from entering th
 
 ## 背景 background：
 
-服务器使用frp后，被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序
+服务器使用frp后，被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序  
 After using FRP, the server was infected with a mining virus, so I decided to add secondary verification to the server, only allowing the specified IP address to access the port, so as to avoid scanning my port with abnormal IP addresses...So I spent the day writing a little validation program
 
 ## 实现的功能如下 functions：  
 
-1. 指定的端口，首先所有ip都不能访问，然后根据web服务验证的结果允许该ip来访问指定端口。
+1. 指定的端口，首先所有ip都不能访问，然后根据web服务验证的结果允许该ip来访问指定端口。  
 The specified port is first inaccessible to all IP addresses and then allowed to access the specified port based on the result of web service authentication.  
 
 2.将以上功能封装成web服务，先在网页端通过 二级密码 来允许当前ip的访问服务器，当前ip才能访问目的ip和端口，比如ssh服务等。  
