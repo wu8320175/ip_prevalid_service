@@ -1,4 +1,7 @@
 ​
+项目概述：防止外网的陌生ip进入服务器的指定端口，通过本web服务来配置允许进入端口的。  
+Project Overview: Prevent unfamiliar IP of the external network from entering the specified port of the server, configuring the port through this web service.  
+
 ## 背景 background：
 
 服务器使用frp后，被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序
@@ -28,7 +31,8 @@ First library installation and use
 Special note: Python must be executed under Sudo permission to use the Python-iptables library   
 下载项目，然后flask_IP&port_valid_service目录下，修改config.json文件，配置密码和禁止的端口  
 Download the project, then Flask_ip & port_valid_service directory, modify the config.json file, configure the password and the forbidden port    
-注意：端口不要加上flask启动的端口  
+注意：禁止端口不要加上flask启动的web端口  
+Note: Forbidden ports Do not add Flask-started web port  
 ```
 在ubuntu下：
 sudo pip install --upgrade python-iptables  
@@ -40,7 +44,7 @@ cd  flask_IP&port_valid_service
 启动： Run:
 sudo python index.py
 
-在centos下，先安装iptables
+在centos下，可能先安装iptables
 
 1. sudo yum install iptables-services
 
@@ -56,7 +60,7 @@ Jan 16 22:22:34 iZ0jleum1rgkepql5fg95pZ iptables.init[16982]: iptables: Applying
 Jan 16 22:22:34 iZ0jleum1rgkepql5fg95pZ systemd[1]: Started IPv4 firewall with iptables.
 
 3.run python
-[root@iZ0jleum1rgkepql5fg95pZ flask_IP&port_valid_service]# python index.py
+[root@iZ0j flask_IP&port_valid_service]# python index.py
 Traceback (most recent call last):
   File "index.py", line 4, in <module>
     import iptables_op as op
@@ -69,8 +73,10 @@ Traceback (most recent call last):
   File "/usr/local/lib64/python3.6/site-packages/iptc/xtables.py", line 825, in <module>
     raise XTablesError("can't find directory with extensions; "
 ## iptc.errors.XTablesError: can't find directory with extensions; please set XTABLES_LIBDIR
-如果出现以上报错，解决方法（找到iptables的xtables文件夹位置，设置环境变量）：
 
+如果出现以上报错，解决方法（找到iptables的xtables文件夹位置，设置环境变量）：  
+If there is an error, the solution (find the iptables xTables folder location, set the environment variable)  
+1）：
 rpm -qa|grep iptables
 
 iptables-libs-1.8.4-17.1.al8.x86_64
@@ -78,11 +84,15 @@ iptables-1.8.4-17.1.al8.x86_64
 iptables-ebtables-1.8.4-17.1.al8.x86_64
 iptables-services-1.8.4-17.1.al8.x86_64
 
+2）：
 rpm -ql iptables-1.8.4-17.1.al8.x86_64
 ![image](https://user-images.githubusercontent.com/24267883/149664238-41837436-6a8a-4ce1-afbf-f6bd25d7580a.png)
 
+3）：
 export XTABLES_LIBDIR=/usr/lib64/xtables/
-3. python 
+
+4.rerun flask,允许flask程序   
+ sudo python index.py
 ```
 
 最后FLASK web页面
