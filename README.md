@@ -125,8 +125,6 @@ iptc 参考 ref：
 Python iptc库csdn的博客 https://blog.csdn.net/sinat_27690807/article/details/115999838?spm=1001.2101.3001.6650.2&utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.pc_relevant_paycolumn_v2&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7ECTRLIST%7Edefault-2.pc_relevant_paycolumn_v2&utm_relevant_index=5  
 
 
-The flask section is not intended to write:  
-If anynoe needs it, I'll add this part.  
 
 所有的iptables操作代码在iptables_OP.py 文件  
 All code in iptables_op.py file  
