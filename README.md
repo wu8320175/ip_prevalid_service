@@ -7,28 +7,28 @@ After using FRP, the server was infected with a mining virus, so I decided to ad
 ## 实现的功能如下 functions：  
 
 1. 指定的端口，首先所有ip都不能访问，然后根据web服务验证的结果允许该ip来访问指定端口。
-The specified port is first inaccessible to all IP addresses and then allowed to access the specified port based on the result of web service authentication.
+The specified port is first inaccessible to all IP addresses and then allowed to access the specified port based on the result of web service authentication.  
 
-2.将以上功能封装成web服务，先在网页端通过 二级密码 来允许当前ip的访问服务器，当前ip才能访问目的ip和端口，比如ssh服务等。
-Encapsulate the above functions into web services. First, allow the current IP to access the server through the secondary password on the web page, and the current IP can access the destination IP and port, such as SSH service.
+2.将以上功能封装成web服务，先在网页端通过 二级密码 来允许当前ip的访问服务器，当前ip才能访问目的ip和端口，比如ssh服务等。  
+Encapsulate the above functions into web services. First, allow the current IP to access the server through the secondary password on the web page, and the current IP can access the destination IP and port, such as SSH service.  
 
 ![image](https://user-images.githubusercontent.com/24267883/149650892-36c95553-48d6-412d-bab6-9156c2816f19.png)
 
 ## 使用工具 tools：  
 
-        Python，python-iptables库，flask （用于web服务）
+        Python，python-iptables库，flask （用于web服务）  
 
-## 原因： python简单。。。。。，flask搭个服务更简单。  
-Reason:Python is simple....., Flask takes a service easier  
+## 原因： python简单。。。。。，flask搭个服务更简单。    
+Reason:Python is simple....., Flask takes a service easier    
 
 ### 首先库安装和使用  
 First library installation and use  
 
 ## 特别说明： python 必须在sudo权限下或者root权限的用户下执行，才能使用python-iptables库  
-Special note: Python must be executed under Sudo permission to use the Python-iptables library 
+Special note: Python must be executed under Sudo permission to use the Python-iptables library   
 下载项目，然后flask_IP&port_valid_service目录下，修改config.json文件，配置密码和禁止的端口  
-Download the project, then Flask_ip & port_valid_service directory, modify the config.json file, configure the password and the forbidden port  
-注意：端口不要加上flask启动的端口
+Download the project, then Flask_ip & port_valid_service directory, modify the config.json file, configure the password and the forbidden port    
+注意：端口不要加上flask启动的端口  
 ```
 在ubuntu下：
 sudo pip install --upgrade python-iptables  
