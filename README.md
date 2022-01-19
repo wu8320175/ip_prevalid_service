@@ -1,7 +1,8 @@
 ​
-项目概述：防止外网的陌生ip进入服务器的指定端口，通过本web服务来配置允许进入端口的。  
+项目概述：防止外网的陌生ip进入服务器的指定端口，通过本web服务来配置允许进入端口的。（主要为自己实验室制作 Mostly for my own lab server）  
 Project Overview: Prevent unfamiliar IP of the external network from entering the specified port of the server, configuring the port through this web service.  
-当然终极方法是：将你的SSH密码设置复杂点，避免泄露，Set your SSH password to set up complex points to avoid leakage
+当然终极方法是：将你的SSH密码设置复杂点，避免泄露，Set your SSH password to set up complex points to avoid leakage  
+
 ## 背景 background：
 
 服务器使用frp后，被人下了挖矿病毒，痛定思痛决定给服务器加上二次验证，只允许指定ip来访问端口，避免不正常的ip来扫描我的端口。。。所以花了一天时间写个小验证程序  
