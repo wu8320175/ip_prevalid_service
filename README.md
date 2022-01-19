@@ -120,7 +120,7 @@ http://127.0.0.1:80/ports/
 
 查看某个端口下允许进入的IP：  
 View IPs allowed under a port:  
-http://127.0.0.1:80/get_all_ip_in_port/?password=123456&port=6002
+http://127.0.0.1:80/port_search/?password=123456&port=6002
 
 
 如果你要配置frp服务的话，请参考：  
