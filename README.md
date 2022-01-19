@@ -104,6 +104,8 @@ Or enter the environment variable setting permanently effective:
 ```
 
 最后FLASK web页面
+界面部分参考了：  
+The html-page section refers to：https://blog.csdn.net/Rover95/article/details/118967794
 最开始丑陋的第一版：  
 The first version of the ugly:  
 ![image](https://user-images.githubusercontent.com/24267883/149650930-d07b2a08-a8ec-4453-9aaf-228d9b109eaf.png)
