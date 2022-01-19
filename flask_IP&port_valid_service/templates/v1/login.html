@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>二次验证登录页面</title>
+</head>
+<body>
+<div>
+    <p>当前IP地址为：<h1 id='ip'>{{cur_ip}}</h1></p>
+    <p>放行的访问端口：<h2 id='port_list'>{{port_list}}</h2></p>
+</div>
+<form method="post">
+    <label>放行口令:</label><input type="password" name="password"><br>
+    <label>放行端口:</label><input type="text" name="port"><br>
+    <input type="hidden" id="cur_ip" name="cur_ip" value="{{cur_ip}}">
+    <input type="submit" value="确定"><br>
+</form>
+<script type="text/javascript">
+    {% if status != 0 %}
+        alert('{{msg}}');
+        window.location.href = window.location.pathname;
+    {% endif %}
+
+</script>
+
+
+</body>
+</html>

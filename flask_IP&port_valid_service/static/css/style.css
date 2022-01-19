@@ -1,0 +1,128 @@
+* { box-sizing: border-box; }
+
+html, body {
+  font-size: 20px;
+  height: 100vh;
+  margin: 0;
+  background-color: #fff;
+}
+p{
+  text-align: center;
+  color:#e4f303;
+}
+body{
+  background: url("../img/bg.jfif") center; /* 首先增加背景图 */
+  background-repeat: no-repeat; /* 将背景设置为不重复显示 */
+}
+
+/* 导航栏 */
+#nav{
+	width: 100%;
+	height: 60px;
+	background-color: #00000080;
+}
+/* 无序列表 */
+#nav ul {
+  float:left;
+  margin: 0px;
+  padding: 0 0 0 0;
+  width: 920px;
+  list-style: none;
+}
+/* 让链接横排 */
+#nav ul li {
+  display: inline;
+}
+/* 字体美化等 */
+#nav ul li a {
+  float: left;
+  padding: 11px 20px; 
+  font-size: 28px;
+  text-align: center;
+  text-decoration: none;
+  /* background: url(../images/templatemo_menu_divider.png)        center right no-repeat; */
+  color: #fff;    
+  font-family: Tahoma;
+  outline: none;
+}
+* 鼠标经过该链接，变色 */
+#nav li a:hover {
+    color:cornflowerblue;
+    background-color:white;
+    /*弧度*/
+    /* border-radius: 30px;  */
+   
+}
+#input_window{
+    border: 1px solid white;
+    /* width: 30%; */
+    /* text-align: center; */
+    margin: 0 auto;
+    margin-top: 10%;  /* 高度调整 */
+    background: #00000080;
+    padding: 40px 60px;
+
+    /* 将按钮的左右边框设置为圆弧 */
+    border-radius: 30px; 
+    /* 圆角弧度24px */
+    transition:0.2s;
+}
+.form-wrapper {
+  position: relative;
+  display: grid;
+  height: 100%;
+  margin: 0;
+  place-items: center;
+  max-width: 100%;
+  padding: 2rem;
+}
+
+form {
+  margin: auto;
+  width: 100%;
+  max-width: 480px;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  /* color: #444; */
+  font-size: 18px; /* 修改按钮文字的大小 */
+  color: white;
+}
+
+input {
+  display: block;
+  width: 100%;
+  margin: 0 0 1rem 0;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 0;
+  border-radius: 0.125rem 0.25rem;
+  background-color: hsl(222, 20%, 95%);
+}
+
+button {
+  display: block;
+  padding: 0.5rem;
+  border: 0;
+  border-radius: 0.125rem 0.25rem;
+  background-color: #40cb90;
+  color: #fff;
+  margin: 2rem 0 0 auto;
+}
+
+input:focus,
+button:focus{
+  outline: 0;
+}
+
+canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}

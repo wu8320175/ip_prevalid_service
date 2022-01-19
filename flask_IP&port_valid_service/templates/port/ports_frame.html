@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+ 
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+ 
+        .container{
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        #music_tool{
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20px;
+            
+            width: 100%; 
+            max-width: 480px;
+
+        }
+</style>
+
+
+
+</head>
+<body>
+    <div class = "container">
+                <iframe src ="{{url}}"  id="info-frame"  width="100%" height="100%" style="position: absolute;" frameborder=0 >
+
+                </iframe>
+
+                <audio id='music_tool' controls loop="loop" type="audio/mpeg"> 
+                    <source src="https://wsaudiobssdlbig.yun.kugou.com/202201182128/846c1c7bafc0d84ea499222dce0e0980/bss/extname/wsaudio/3c186a98bef843fb7b2ae7301363e02f.mp3" > 
+                     Your browser does'nt support audio embedding feature. 
+                </audio>
+    </div>
+</body>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){ 
+        vMP3 = document.getElementById("music_tool");
+        vMP3.volume = 0.02;
+        $("#music_tool").one("click",function(){
+            vMP3.play();
+        });
+
+        // $("#music_tool").click();
+    }); 
+        // 获取iframe下的class form-wrapper的元素
+    var iframe = document.getElementById("info-frame");
+    iframe.onload=function(){
+        var iframeWin = iframe.contentWindow || iframe;
+        // var iframeDoc = iframeWin.document;
+        // var iframeBody = iframeDoc.body;
+        // var iframeForm = iframeBody.getElementsByClassName("form-wrapper")[0];
+        // iframeForm.style.display = "none";
+    }
+
+</script>
+</html>
